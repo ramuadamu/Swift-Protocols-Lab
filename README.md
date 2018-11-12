@@ -31,9 +31,51 @@ that is the people array sorted by age.
 </pre> 
 
 </br> </br> 
+'''     Swift
+class Human: CustomStringConvertible, Equatable {
+var description: String {
+return "The person\'s name is \(name) and age is \(age)"
+}
+static func == (lhs: Human, rhs: Human) -> Bool {
+return lhs.name == rhs.name &&
+lhs.age == rhs.age
+}
+
+var name : String
+var age : Int
+
+init (name: String, age: Int) {
+self.name = name
+self.age = age
+}
+
+static func < (lhs:Human, rhs:Human) -> Bool {
+return lhs.age < rhs.age
+}
 
 
-<pre> 
+}
+
+
+
+
+var people: [Human] = []
+let ramu = Human(name: "Ramu", age: 29)
+let kathy = Human(name: "Kathy", age: 25)
+let raymond = Human(name: "Raymond", age: 22)
+let genesis = Human(name: "Genesis", age: 19)
+
+people.append(ramu)
+people.append(kathy)
+people.append(raymond)
+people.append(genesis)
+
+if ramu == kathy {
+print("same person")
+} else {
+print("different individual")
+}
+'''
 Question 2. 
 Create a protocol called Vehicle with two requirements: a nonsettable numberOfWheels property of
 type Int, and a function called drive().
